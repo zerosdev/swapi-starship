@@ -2,13 +2,17 @@
 <h6 align="center">A simple web that consumes the SWAPI.DEV Starships API</h6>
 
 <p align="center">
-  <img src="https://img.shields.io/github/v/release/zerosdev/swapi-starship?include_prereleases" alt="release"/>
   <img src="https://img.shields.io/github/languages/top/zerosdev/swapi-starship" alt="language"/>
   <img src="https://img.shields.io/github/license/zerosdev/swapi-starship" alt="license"/>
   <img src="https://img.shields.io/github/languages/code-size/zerosdev/swapi-starship" alt="size"/>
-  <img src="https://img.shields.io/github/downloads/zerosdev/swapi-starship/total" alt="downloads"/>
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="pulls"/>
 </p>
+
+## Features
+- Infinite scroll
+- Auto-submit search form
+- Content placeholder while loading
+- Starship takeoff animation
 
 ## Requirements
 - NodeJS 16.18+
