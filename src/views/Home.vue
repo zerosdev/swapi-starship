@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { asyncFetchApi } from '@/composables/asyncFetchApi'
-import ContentPlaceholderWrapper from '@/components/content-placeholder/Wrapper.vue'
-import ContentPlaceholderImg from '@/components/content-placeholder/Img.vue'
-import ContentPlaceholderText from '@/components/content-placeholder/Text.vue'
 import ShipPlaceholder from '@/components/views/ShipPlaceholder.vue'
 import Swal from 'sweetalert2'
 
@@ -67,6 +64,41 @@ async function getStarshipDetail (url: string) {
 
     starshipDetail.value = result.value
     loadingModal.value = false
+}
+
+function numberFormat(n: any, d: any = 0, p: string = '.', t: string = '') {
+    n = Number(n);
+    if (isNaN(n)) {
+        d = (isNaN(d = Math.abs(d)) ? 0 : d);
+        return (0).toFixed(d);
+    } else {
+        const isFloat = ((n % 1) !== 0);
+
+        if (isFloat && d == "*") {
+            d = String(n).split(".")[1].length;
+        } else if (Number(d) >= 0) {
+            d = Number(d);
+        } else {
+            d = String(n).split(".");
+            if (d.length > 1) {
+                d = d[1].length;
+            }
+            else {
+                d = 0;
+            }
+        }
+
+        d = (isNaN(d = Math.abs(d)) ? 2 : d);
+        p = (p === undefined ? "." : p);
+        t = (t === undefined ? "" : t);
+        const s = n < 0 ? "-" : "";
+        const i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(d)));
+        let j = i.length
+        j = j > 3 ? j % 3 : 0;
+        const ret = s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (d ? p + Math.abs(n - parseInt(i)).toFixed(d).slice(2) : "");
+
+        return ret;
+    }
 }
 
 // running for the first time
@@ -143,10 +175,10 @@ window.addEventListener('scroll', () => {
                             <div class="mx-auto starship-box">
                                 <img class="mx-auto starship-icon" src="https://cdn-icons-png.flaticon.com/512/2949/2949053.png" :alt="starship.name" />
                                 <div class="card-body content position-relative p-0 mt-3">
-                                    <a href="item-detail-one.html" class="title text-dark h6">{{ ss.name }}</a>
+                                    <a href="#!" class="title text-dark h6" @click="getStarshipDetail(ss.url)">{{ ss.name }}</a>
                                     <div class="d-flex justify-content-between mt-3 px-2">
                                         <button class="btn btn-sm btn-search rounded-pill py-1 px-4"  @click="getStarshipDetail(ss.url)">Detail</button>
-                                        <star-rating :rating="parseFloat(ss.hyperdrive_rating)" :star-size="14" :fixed-points="1" :read-only="true" />
+                                        <StarRating :rating="parseFloat(ss.hyperdrive_rating)" :star-size="14" :fixed-points="1" :read-only="true" />
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +192,7 @@ window.addEventListener('scroll', () => {
                 </div>
             </div>
         </section>
-        <b-modal size="xl" v-model="openModalDetail" :bodyClass="'p-0'" @hide.prevent :hideHeaderClose="true" :scrollable="true">
+        <b-modal size="xl" v-model="openModalDetail" :bodyClass="'p-0'" @hide.prevent :hideHeaderClose="true">
             <template #title>
                 <i class="bi-rocket-takeoff"></i> {{ loadingModal ? 'Loading...' : 'Starship Detail' }}
             </template>
@@ -193,7 +225,7 @@ window.addEventListener('scroll', () => {
                 <div class="col-12 col-md-5 col-lg-4 d-flex flex-wrap align-items-center p-3">
                     <img src="https://cdn-icons-png.flaticon.com/512/2949/2949053.png" class="mx-auto starship-detail__icon w-100" />
                     <div class="badge-price">
-                        ${{ $filters.number_format(starshipDetail.cost_in_credits, 0, '', ',') }}
+                        ${{ numberFormat(starshipDetail.cost_in_credits, 0, '', ',') }}
                     </div>
                 </div>
                 <div class="col-12 col-md-7 col-lg-8 p-0 detail-divider">
@@ -237,13 +269,13 @@ window.addEventListener('scroll', () => {
                             <tr>
                                 <td>Cargo Capacity</td>
                                 <td>:</td>
-                                <td>{{ $filters.number_format(starshipDetail.cargo_capacity, 0, '', ',') }} Kg</td>
+                                <td>{{ numberFormat(starshipDetail.cargo_capacity, 0, '', ',') }} Kg</td>
                             </tr>
                             <tr>
                                 <td>Hyperdrive Rating</td>
                                 <td>:</td>
                                 <td>
-                                    <star-rating :rating="parseFloat(starshipDetail.hyperdrive_rating)" :star-size="14" :fixed-points="1" :read-only="true" />
+                                    <StarRating :rating="parseFloat(starshipDetail.hyperdrive_rating)" :star-size="14" :fixed-points="1" :read-only="true" />
                                 </td>
                             </tr>
                         </tbody>

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import ContentPlaceholderWrapper from '@/components/content-placeholder/Wrapper.vue'
-import ContentPlaceholderImg from '@/components/content-placeholder/Img.vue'
-import ContentPlaceholderText from '@/components/content-placeholder/Text.vue'
 </script>
 <template>
     <div class="mx-auto starship-box">

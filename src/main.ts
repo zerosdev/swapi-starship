@@ -5,7 +5,12 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
+// @ts-ignore
 import StarRating from 'vue-star-rating'
+import ContentPlaceholderWrapper from './components/content-placeholder/Wrapper.vue'
+import ContentPlaceholderImg from './components/content-placeholder/Img.vue'
+import ContentPlaceholderText from './components/content-placeholder/Text.vue'
+import ContentPlaceholderHeading from './components/content-placeholder/Heading.vue'
 
 // bootstrap assets
 import 'bootstrap-icons/font/bootstrap-icons.min.css'
@@ -23,49 +28,13 @@ const app = createApp(
             }
         }
     })
-    )
-    
-    app.config.globalProperties.$filters = {
-        number_format(n: any, d: any = 0, p: string = '.', t: string = '') {
-            n = Number(n);
-            if (isNaN(n)) {
-                d = (isNaN(d = Math.abs(d)) ? 0 : d);
-                return (0).toFixed(d);
-        }
-        else {
-            const isFloat = ((n % 1) !== 0);
-
-            if (isFloat && d == "*") {
-                d = String(n).split(".")[1].length;
-            }
-            else if (Number(d) >= 0) {
-                d = Number(d);
-            }
-            else {
-                d = String(n).split(".");
-                if (d.length > 1) {
-                    d = d[1].length;
-                }
-                else {
-                    d = 0;
-                }
-            }
-
-            d = (isNaN(d = Math.abs(d)) ? 2 : d);
-            p = (p === undefined ? "." : p);
-            t = (t === undefined ? "" : t);
-            const s = n < 0 ? "-" : "";
-            const i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(d)));
-            let j = i.length
-            j = j > 3 ? j % 3 : 0;
-            const ret = s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (d ? p + Math.abs(n - parseInt(i)).toFixed(d).slice(2) : "");
-
-            return ret;
-        }
-    }
-  }
+)
 
 app.use(createPinia())
 app.use(router)
-app.component('star-rating', StarRating)
+app.component('StarRating', StarRating)
+app.component('ContentPlaceholderWrapper', ContentPlaceholderWrapper)
+app.component('ContentPlaceholderImg', ContentPlaceholderImg)
+app.component('ContentPlaceholderText', ContentPlaceholderText)
+app.component('ContentPlaceholderHeading', ContentPlaceholderHeading)
 app.mount('#app')
