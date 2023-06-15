@@ -1,0 +1,43 @@
+/* Mobile view */
+@media screen and (max-width: 768px) {
+    .starship-col {
+        margin-top: 0px !important;
+    }
+
+    .starship-icon {
+        position: initial;
+    }
+
+    .starship-icon__placeholder {
+        position: relative !important;
+        bottom: 0% !important;
+        transform: translate(-50, -50) !important;
+    }
+
+    .starship-box {
+        padding: 15px;
+    }
+
+    .starship-detail__icon {
+        max-width: 150px;
+    }
+}
+
+/* Tablet view */
+@media screen and (min-width: 768px) {
+    
+}
+
+/* Desktop view */
+@media screen and (min-width: 1024px) {
+    .starship-box:hover .starship-icon {
+        animation: starting 1s, takeoff 1.5s linear;
+        animation-delay: 0s, 1.5s;
+        -webkit-animation: starting 1s, takeoff 1.5s linear;
+        -webkit-animation-delay: 0s, 1.5s;
+    }
+
+    .starship-detail__icon {
+        max-width: 300px;
+    }
+}
