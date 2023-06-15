@@ -33,7 +33,7 @@ const app = createApp(
                 return (0).toFixed(d);
         }
         else {
-            var isFloat = ((n % 1) !== 0);
+            const isFloat = ((n % 1) !== 0);
 
             if (isFloat && d == "*") {
                 d = String(n).split(".")[1].length;
@@ -54,11 +54,11 @@ const app = createApp(
             d = (isNaN(d = Math.abs(d)) ? 2 : d);
             p = (p === undefined ? "." : p);
             t = (t === undefined ? "" : t);
-            let s = n < 0 ? "-" : "";
-            let i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(d)));
+            const s = n < 0 ? "-" : "";
+            const i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(d)));
             let j = i.length
             j = j > 3 ? j % 3 : 0;
-            let ret = s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (d ? p + Math.abs(n - parseInt(i)).toFixed(d).slice(2) : "");
+            const ret = s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (d ? p + Math.abs(n - parseInt(i)).toFixed(d).slice(2) : "");
 
             return ret;
         }

@@ -1,6 +1,17 @@
-# ordivo-starship
+<h1 align="center">swapi-starship</h1>
+<h6 align="center">A simple web that consumes the SWAPI.DEV Starships API</h6>
 
-This template should help get you started developing with Vue 3 in Vite.
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/zerosdev/swapi-starship?include_prereleases" alt="release"/>
+  <img src="https://img.shields.io/github/languages/top/zerosdev/swapi-starship" alt="language"/>
+  <img src="https://img.shields.io/github/license/zerosdev/swapi-starship" alt="license"/>
+  <img src="https://img.shields.io/github/languages/code-size/zerosdev/swapi-starship" alt="size"/>
+  <img src="https://img.shields.io/github/downloads/zerosdev/swapi-starship/total" alt="downloads"/>
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="pulls"/>
+</p>
+
+## Requirements
+- NodeJS 16.18+
 
 ## Recommended IDE Setup
 
@@ -24,29 +35,29 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 ## Project Setup
 
 ```sh
-npm install
+yarn install
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+yarn dev
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-npm run build
+yarn build
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-npm run test:unit
+yarn test:unit
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
-npm run lint
+yarn lint
 ```
