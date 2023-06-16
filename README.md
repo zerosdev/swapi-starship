@@ -15,7 +15,7 @@
 - Starship takeoff animation
 
 ## Requirements
-- NodeJS 16.18+
+- NodeJS 18.0.0+
 
 ## Recommended IDE Setup
 
