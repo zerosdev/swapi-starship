@@ -14,6 +14,10 @@
 - Content placeholder while loading
 - Starship takeoff animation
 
+## Demo
+This source code has been deployed on Netlify with the following url: https://zerosdev-swapi-starship.netlify.app/
+
+
 ## Requirements
 - NodeJS 18.0.0+
 
