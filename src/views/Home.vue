@@ -173,11 +173,11 @@ window.addEventListener('scroll', () => {
                     <template v-else>
                         <div class="col-sm-6 col-md-4 col-lg-3 text-center align-items-stretch mt-2 mb-5 starship-col" v-for="ss in starship.results">
                             <div class="mx-auto starship-box">
-                                <img class="mx-auto starship-icon" src="https://cdn-icons-png.flaticon.com/512/2949/2949053.png" :alt="starship.name" />
+                                <img class="mx-auto starship-icon" src="/images/starship.png" :alt="starship.name" />
                                 <div class="card-body content position-relative p-0 mt-3">
                                     <a href="#!" class="title text-dark h6" @click="getStarshipDetail(ss.url)">{{ ss.name }}</a>
                                     <div class="d-flex justify-content-between mt-3 px-2">
-                                        <button class="btn btn-sm btn-search rounded-pill py-1 px-4"  @click="getStarshipDetail(ss.url)">Detail</button>
+                                        <button class="btn btn-sm btn-search rounded-pill py-1 px-4 btn-detail"  @click="getStarshipDetail(ss.url)">Detail</button>
                                         <StarRating :rating="parseFloat(ss.hyperdrive_rating)" :star-size="14" :fixed-points="1" :read-only="true" />
                                     </div>
                                 </div>
@@ -223,7 +223,7 @@ window.addEventListener('scroll', () => {
             </div>
             <div class="row px-3" v-else-if="starshipDetail.name">
                 <div class="col-12 col-md-5 col-lg-4 d-flex flex-wrap align-items-center p-3">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2949/2949053.png" class="mx-auto starship-detail__icon w-100" />
+                    <img src="/images/starship.png" class="mx-auto starship-detail__icon w-100" />
                     <div class="badge-price">
                         ${{ numberFormat(starshipDetail.cost_in_credits, 0, '', ',') }}
                     </div>
