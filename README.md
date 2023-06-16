@@ -60,8 +60,8 @@ yarn build
 yarn test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Run Browser Tests with [Puppeteer](https://pptr.dev/)
 
 ```sh
-yarn lint
+yarn test:browser
 ```
